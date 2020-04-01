@@ -1,0 +1,82 @@
+* { box-sizing: border-box; }
+
+:root {
+    --column-1: #AA6C39;
+    --column-2: #226666;
+    --column-3: #2D882D;
+    --column-4: #AA3939;
+}
+
+body {
+    margin: 0;
+    background: url('https://images.pexels.com/photos/3801030/pexels-photo-3801030.jpeg?cs=srgb&dl=photo-of-trees-in-forest-3801030.jpg&fm=jpg');
+    background-size: cover;
+    background-position: center center;
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+
+h1 {
+    letter-spacing: 2px;
+}
+
+.main-title {
+    text-align: center;
+    font-size: 3rem;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.drag-container {
+    margin: 20px 100px;
+}
+
+.drag-list {
+    display: flex;
+    align-items: flex-start;
+}
+
+/* @media screen and (max-width: 600px) {
+    .drag-list { display: block; }
+} */
+
+.drag-column {
+    flex: 1;
+    margin: 0 10px;
+    position: relative;
+    background-color: rgba(0, 0, 0, .4);
+    border-radius: 10px;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    /* border-top-right-radius: 10px;
+    border-top-left-radius: 10px; */
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.header h1 {
+    font-size: 1.25rem;
+}
+
+.backlog-column .header { background-color: var(--column-1); }
+.progress-column .header { background-color: var(--column-2); }
+.complete-column .header { background-color: var(--column-3); }
+.on-hold-column .header { background-color: var(--column-4); }
+
+.drag-item {
+    margin: 10px;
+    padding: 10px;
+    height: fit-content;
+    background-color: rgba(0, 0, 0, .8);
+    border-radius: 10px;
+    line-height: 1.5rem;
+    letter-spacing: 1px;
+}

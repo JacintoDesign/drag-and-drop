@@ -8,6 +8,51 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <h1 class="main-title">Kanban Board</h1>
+    <div class="drag-container">
+        <ul class="drag-list">
+            <!-- To Do Column -->
+            <li class="drag-column backlog-column">
+                <span class="header">
+                    <h1>Backlog</h1>
+                </span>
+                <ul class="drag-item-list">
+                    <li class="drag-item">The only way this works is if you make it work.</li>
+                    <li class="drag-item">Something on one line.</li>
+                </ul>
+            </li>
+            <!-- Progress Column -->
+            <li class="drag-column progress-column">
+                <span class="header">
+                    <h1>In Progress</h1>
+                </span>
+                <ul class="drag-item-list">
+                    <li class="drag-item">Lorem ipsum dolor sit, amet consectetur adipisicing elit.</li>
+                    <li class="drag-item">Something on one line.</li>
+                </ul>
+            </li>
+            <!-- Complete Column -->
+            <li class="drag-column complete-column">
+                <span class="header">
+                    <h1>Complete</h1>
+                </span>
+                <ul class="drag-item-list">
+                    <li class="drag-item">The only way this works is if you make it work.</li>
+                    <li class="drag-item">Something on one line.</li>
+                </ul>
+            </li>
+            <!-- On Hold Column -->
+            <li class="drag-column on-hold-column">
+                <span class="header">
+                    <h1>On Hold</h1>
+                </span>
+                <ul class="drag-item-list">
+                    <li class="drag-item">The only way this works is if you make it work.</li>
+                    <li class="drag-item">Something on one line.</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
     <!-- Script -->
     <script src="script.js"></script>
 </body>
