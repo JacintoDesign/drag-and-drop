@@ -13,71 +13,116 @@
         <ul class="drag-list">
             <!-- To Do Column -->
             <li class="drag-column backlog-column">
-                <span class="header">
+                <span class="header drag-column">
                     <h1>Backlog</h1>
                 </span>
-                <ul class="drag-item-list">
-                    <li class="drag-item" contenteditable="true">The only way this works is if you make it work.</li>
-                    <li class="drag-item">Something on one line.</li>
-                </ul>
-                <div class="add-btn-group">
-                    <div class="add-btn">
-                        <span class="plus-sign">+</span>
-                        <span>Add Item</span>
+                <div id="backlog-content" class="custom-scroll">
+                    <ul class="drag-item-list">
+                        <li class="drag-item" contenteditable="true">The only way this works is if you make it work.</li>
+                        <li class="drag-item" contenteditable="true">Something on one line.</li>
+                        <li class="drag-item" contenteditable="true">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam hic veritatis quia explicabo, aut suscipit ex repudiandae necessitatibus ipsum harum quae facere, molestiae optio cumque iste. Obcaecati facere iste ab.</li>
+                    </ul>
+                    <div class="add-btn-group">
+                        <div class="add-btn" id="add-item">
+                            <span class="plus-sign">+</span>
+                            <span>Add Item</span>
+                        </div>
+                        <div class="add-btn solid" id="save-item">
+                            <span>Save Item</span>
+                        </div>
                     </div>
-                    <div class="add-btn solid">
-                        <span>Save Item</span>
-                    </div>
-                </div>
-                <div class="add-container">
-                    <!-- <form id="backlog-form">
-                        <textarea name="backlog-item" id="backlog-item"></textarea>
-                    </form> -->
-                    <div class="add-item" contenteditable="true">
-
+                    <div class="add-container">
+                        <!-- <form id="backlog-form">
+                            <textarea name="backlog-item" id="backlog-item"></textarea>
+                        </form> -->
+                        <div class="add-item" contenteditable="true">
+    
+                        </div>
                     </div>
                 </div>
             </li>
             <!-- Progress Column -->
             <li class="drag-column progress-column">
-                <span class="header">
+                <span class="header drag-column">
                     <h1>In Progress</h1>
                 </span>
-                <ul class="drag-item-list">
-                    <li class="drag-item">Lorem ipsum dolor sit, amet consectetur adipisicing elit.</li>
-                    <li class="drag-item">Something on one line.</li>
-                </ul>
-                <div class="add-btn">
-                    <span class="plus-sign">+</span>
-                    <span>Add Item</span>
+                <!-- Progress Content -->
+                <div id="progress-content" class="custom-scroll">
+                    <ul class="drag-item-list">
+                        <li class="drag-item" contenteditable="true">The only way this works is if you make it work.</li>
+                        <li class="drag-item" contenteditable="true">Something on one line.</li>
+                    </ul>
+                    <!-- Add Button Group -->
+                    <!-- <div class="add-btn-group">
+                        <div class="add-btn" id="add-item">
+                            <span class="plus-sign">+</span>
+                            <span>Add Item</span>
+                        </div>
+                        <div class="add-btn solid" id="save-item">
+                            <span>Save Item</span>
+                        </div>
+                    </div>
+                    <div class="add-container">
+                        <div class="add-item" contenteditable="true">
+    
+                        </div>
+                    </div> -->
                 </div>
             </li>
             <!-- Complete Column -->
             <li class="drag-column complete-column">
-                <span class="header">
+                <span class="header drag-column">
                     <h1>Complete</h1>
                 </span>
-                <ul class="drag-item-list">
-                    <li class="drag-item">The only way this works is if you make it work.</li>
-                    <li class="drag-item">Something on one line.</li>
-                </ul>
-                <div class="add-btn">
-                    <span class="plus-sign">+</span>
-                    <span>Add Item</span>
+                <!-- Complete Content -->
+                <div id="complete-content" class="custom-scroll">
+                    <ul class="drag-item-list">
+                        <li class="drag-item" contenteditable="true">The only way this works is if you make it work.</li>
+                        <li class="drag-item" contenteditable="true">Something on one line.</li>
+                    </ul>
+                    <!-- Add Button Group -->
+                    <!-- <div class="add-btn-group">
+                        <div class="add-btn" id="add-item">
+                            <span class="plus-sign">+</span>
+                            <span>Add Item</span>
+                        </div>
+                        <div class="add-btn solid" id="save-item">
+                            <span>Save Item</span>
+                        </div>
+                    </div>
+                    <div class="add-container">
+                        <div class="add-item" contenteditable="true">
+    
+                        </div>
+                    </div> -->
                 </div>
             </li>
             <!-- On Hold Column -->
             <li class="drag-column on-hold-column">
-                <span class="header">
+                <span class="header drag-column">
                     <h1>On Hold</h1>
                 </span>
-                <ul class="drag-item-list">
-                    <li class="drag-item">The only way this works is if you make it work.</li>
-                    <li class="drag-item">Something on one line.</li>
-                </ul>
-                <div class="add-btn">
-                    <span class="plus-sign">+</span>
-                    <span>Add Item</span>
+                <!-- On Hold Content -->
+                <div id="on-hold-content" class="custom-scroll">
+                    <ul class="drag-item-list">
+                        <li class="drag-item" contenteditable="true">The only way this works is if you make it work.</li>
+                        <li class="drag-item" contenteditable="true">Something on one line.</li>
+                    </ul>
+                    <!-- Add Button Group -->
+                    <!-- <div class="add-btn-group">
+                        <div class="add-btn" id="add-item">
+                            <span class="plus-sign">+</span>
+                            <span>Add Item</span>
+                        </div>
+                        <div class="add-btn solid" id="save-item">
+                            <span>Save Item</span>
+                        </div>
+                    </div>
+                    <div class="add-container">
+                        <div class="add-item" contenteditable="true">
+    
+                        </div>
+                    </div> -->
                 </div>
             </li>
         </ul>

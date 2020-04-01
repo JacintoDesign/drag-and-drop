@@ -14,6 +14,7 @@ body {
     background-position: center center;
     color: white;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    overflow-y: hidden;
 }
 
 
@@ -51,6 +52,31 @@ ul {
     position: relative;
     background-color: rgba(0, 0, 0, .4);
     border-radius: 10px;
+
+}
+
+/* Custom Scrollbar */
+.custom-scroll {
+    overflow-y: auto;
+    max-height: 78vh;
+}
+
+.custom-scroll::-webkit-scrollbar-track {
+	box-shadow: inset 0 0 6px rgba(0,0,0, .4);
+	border-radius: 10px;
+    background-color: rgba(255, 255, 255, .3);
+    margin-right: 5px;
+}
+
+.custom-scroll::-webkit-scrollbar {
+    width: 10px;
+    height: 90%;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: rgba(0, 0, 0, .8);
 }
 
 .header {
