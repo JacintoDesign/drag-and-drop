@@ -9,7 +9,7 @@
 
 body {
     margin: 0;
-    background: url('https://images.pexels.com/photos/3801030/pexels-photo-3801030.jpeg?cs=srgb&dl=photo-of-trees-in-forest-3801030.jpg&fm=jpg');
+    background: url('./trees.jpg');
     background-size: cover;
     background-position: center center;
     color: white;
@@ -66,10 +66,23 @@ ul {
     font-size: 1.25rem;
 }
 
-.backlog-column .header { background-color: var(--column-1); }
-.progress-column .header { background-color: var(--column-2); }
-.complete-column .header { background-color: var(--column-3); }
-.on-hold-column .header { background-color: var(--column-4); }
+.backlog-column .header,
+.backlog-column .solid,
+.backlog-column .solid:hover { 
+    background-color: var(--column-1); 
+}
+
+.progress-column .header { 
+    background-color: var(--column-2); 
+}
+
+.complete-column .header { 
+    background-color: var(--column-3); 
+}
+
+.on-hold-column .header { 
+    background-color: var(--column-4); 
+}
 
 .drag-item {
     margin: 10px;
@@ -79,4 +92,72 @@ ul {
     border-radius: 10px;
     line-height: 1.5rem;
     letter-spacing: 1px;
+}
+
+.drag-item:focus {
+    outline: none;
+    background-color: white;
+    color: black;
+}
+
+.add-btn-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.add-btn {
+    margin: 5px 10px;
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    width: fit-content;
+    border-radius: 5px;
+    transition: all .3s ease-in;
+    user-select: none;
+}
+
+.add-btn:hover {
+    background-color: rgba(255, 255, 255, .9);
+    color: black;
+}
+
+.add-btn:active {
+    transform: scale(.97);
+}
+
+.solid:hover {
+    transition: unset;
+    filter: brightness(95%);
+    color: white;
+}
+
+.plus-sign {
+    font-size: 1.5rem;
+    margin-right: 5px;
+    margin-top: 1px;
+}
+
+.add-container {
+    margin: 10px;
+    padding: 5px 10px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, .9);
+    min-height: 100px;
+}
+
+.add-item {
+    width: 100%;
+    min-height: 100px;
+    height: auto;
+    background-color: white;
+    border-radius: 10px;
+    margin: 5px auto;
+    resize: none;
+    color: black;
+    padding: 10px;
+}
+
+.add-item:focus {
+    outline: none;
 }
