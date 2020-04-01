@@ -11,7 +11,9 @@ body {
     margin: 0;
     background: url('./trees.jpg');
     background-size: cover;
-    background-position: center center;
+    /* Enter x and y position */
+    background-position: 50% 60%;
+    background-attachment: fixed;
     color: white;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     overflow-y: hidden;
@@ -52,7 +54,6 @@ ul {
     position: relative;
     background-color: rgba(0, 0, 0, .4);
     border-radius: 10px;
-
 }
 
 /* Custom Scrollbar */
@@ -70,7 +71,6 @@ ul {
 
 .custom-scroll::-webkit-scrollbar {
     width: 10px;
-    height: 90%;
 }
 
 .custom-scroll::-webkit-scrollbar-thumb {
@@ -98,15 +98,21 @@ ul {
     background-color: var(--column-1); 
 }
 
-.progress-column .header { 
+.progress-column .header,
+.progress-column .solid,
+.progress-column .solid:hover { 
     background-color: var(--column-2); 
 }
 
-.complete-column .header { 
+.complete-column .header,
+.complete-column .solid,
+.complete-column .solid:hover { 
     background-color: var(--column-3); 
 }
 
-.on-hold-column .header { 
+.on-hold-column .header,
+.on-hold-column .solid,
+.on-hold-column .solid:hover { 
     background-color: var(--column-4); 
 }
 
@@ -132,7 +138,7 @@ ul {
 }
 
 .add-btn {
-    margin: 5px 10px;
+    margin: 10px;
     padding: 5px 10px;
     display: flex;
     align-items: center;
@@ -150,6 +156,10 @@ ul {
 
 .add-btn:active {
     transform: scale(.97);
+}
+
+.solid {
+    display: none;
 }
 
 .solid:hover {
@@ -170,6 +180,7 @@ ul {
     border-radius: 10px;
     background-color: rgba(255, 255, 255, .9);
     min-height: 100px;
+    display: none;
 }
 
 .add-item {
