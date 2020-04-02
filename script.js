@@ -22,119 +22,69 @@ let completeListArray = [ "Being cool", "Getting stuff done"];
 let onHoldListArray = [ "Being uncool" ];
 
 // Update Item
-function updateItem() {
-    // for (i = 0; i < backlogList.children.length; i++) {
-    //     itemValue = backlogList.children[i].innerText;
-    //     for (j = 0; j < backlogListArray.length; j++) {
-    //         if (itemValue == backlogListArray[j]) {
-    //             console.log('duplicate');
-    //             backlogListArray.splice(backlogListArray[j]);
-    //         } else {
-    //             backlogListArray.push(itemValue);
-    //         }
-    //     }     
-    // }
-    for (i = 0; i < backlogList.children.length; i++) {
-        itemValue = backlogList.children[i].innerText;
-        backlogListArray.push(itemValue);
+function updateItem(id, column) {
+    console.log('testing that', id, column);
+    if (column == 0) {
+        backlogListArray[id] = backlogList.children[id].innerText;
     }
-    for (i = 0; i < progressList.children.length; i++) {
-        itemValue = progressList.children[i].innerText;
-        progressListArray.push(itemValue);
+    if (column == 1) {
+        progressListArray[id] = progressList.children[id].innerText;
     }
-    for (i = 0; i < completeList.children.length; i++) {
-        itemValue = completeList.children[i].innerText;
-        completeListArray.push(itemValue);
+    if (column == 2) {
+        completeListArray[id] = completeList.children[id].innerText;
     }
-    for (i = 0; i < onHoldList.children.length; i++) {
-        itemValue = onHoldList.children[i].innerText;
-        onHoldListArray.push(itemValue);
+    if (column == 3) {
+        onHoldListArray[id] = onHoldList.children[id].innerText;
     }
+    updateArrays(column);
+}
+
+// Update Arrays
+function updateArrays(column) {
+    if (column == 0 || !updatedOnLoad) {
+        console.log('updateonLoad', updatedOnLoad);
+        backlogList.innerHTML = '';
+        console.log('backlog empty', backlogList.innerHTML);
+        for (i = 0; i < backlogListArray.length; i++) {
+            backlogList.innerHTML += `
+            <li id="${[i]}" class="drag-item" contenteditable="true" onfocusout="updateItem(this.id, 0)">${backlogListArray[i]}</li>
+            `;
+        }
+    }
+    if (column == 1 || !updatedOnLoad) {
+        progressList.innerHTML = '';
+        for (i = 0; i < progressListArray.length; i++) {
+            progressList.innerHTML += `
+            <li id="${[i]}" class="drag-item" contenteditable="true" onfocusout="updateItem(this.id, 1)">${progressListArray[i]}</li>
+            `;
+        }
+    }
+    if (column == 2 || !updatedOnLoad) {
+        completeList.innerHTML = '';
+        for (i = 0; i < completeListArray.length; i++) {
+            completeList.innerHTML += `
+            <li id="${[i]}" class="drag-item" contenteditable="true" onfocusout="updateItem(this.id, 2)">${completeListArray[i]}</li>
+            `;
+        }
+    }
+    if (column == 3 || !updatedOnLoad) {
+        onHoldList.innerHTML = '';
+        for (i = 0; i < onHoldListArray.length; i++) {
+            onHoldList.innerHTML += `
+            <li id="${[i]}" class="drag-item" contenteditable="true" onfocusout="updateItem(this.id, 3)">${onHoldListArray[i]}</li>
+            `;
+        }
+    }
+    updatedOnLoad = true;
     console.log('backlog:', backlogListArray);
     console.log('progress:', progressListArray);
     console.log('complete:', completeListArray);
     console.log('onHold:', onHoldListArray);
-    updateArrays();
 }
-
-// Update Arrays
-function updateArrays() {
-    console.log(backlogListArray);
-    if (updatedOnLoad == false) {
-        updatedOnLoad = true;
-        for (i = 0; i < backlogListArray.length; i++) {
-            backlogList.innerHTML += `
-            <li class="drag-item" contenteditable="true" onfocusout="updateItem()">${backlogListArray[i]}</li>
-            `;
-        }
-    } else {
-        backlogList.innerHTML = '';
-        for (i = 0; i < backlogListArray.length; i++) {
-            if (backlogListArray[i].length < 1) {
-                console.log('empty item');
-            } else {
-                backlogList.innerHTML += `
-                <li class="drag-item" contenteditable="true" onfocusout="updateItem()">${backlogListArray[i]}</li>
-                `;
-            }
-        }
-    }
-    for (i = 0; i < progressListArray.length; i++) {
-        if (progressListArray[i].length < 1) {
-            console.log('empty item');
-        } else {
-            progressList.innerHTML += `
-            <li class="drag-item" contenteditable="true" onfocusout="updateItem()">${progressListArray[i]}</li>
-            `;
-        }
-    }
-    for (i = 0; i < completeListArray.length; i++) {
-        if (completeListArray[i].length < 1) {
-            console.log('empty item');
-        } else {
-            completeList.innerHTML += `
-            <li class="drag-item" contenteditable="true" onfocusout="updateItem()">${completeListArray[i]}</li>
-            `;
-        }
-    }
-    for (i = 0; i < onHoldListArray.length; i++) {
-        if (onHoldListArray[i].length < 1) {
-            console.log('empty item');
-        } else {
-            onHoldList.innerHTML += `
-            <li class="drag-item" contenteditable="true" onfocusout="updateItem()">${onHoldListArray[i]}</li>
-            `;
-        }
-    }
-}
-
-// function startUpArrays() {
-//     for (i = 0; i < backlogListArray.length; i++) {
-//         backlogList.innerHTML += `
-//         <li class="drag-item" contenteditable="true" onfocusout="updateItem()">${backlogListArray[i]}</li>
-//         `;
-//     }
-//     for (i = 0; i < progressListArray.length; i++) {
-//         progressList.innerHTML += `
-//         <li class="drag-item" contenteditable="true" onfocusout="updateItem()">${progressListArray[i]}</li>
-//         `;
-//     }
-//     for (i = 0; i < completeListArray.length; i++) {
-//         completeList.innerHTML = `
-//         <li class="drag-item" contenteditable="true" onfocusout="updateItem()">${completeListArray[i]}</li>
-//         `;
-//     }
-//     for (i = 0; i < onHoldListArray.length; i++) {
-//             onHoldList.innerHTML = `
-//             <li class="drag-item" contenteditable="true" onfocusout="updateItem()">${onHoldListArray[i]}</li>
-//             `;
-//     }
-// }
-
 
 // Show Add Item Input Box
 function showInputBox(column) {
-    // console.log(column);
+    // console.log(column); 
     addBtns[column].style.visibility = 'hidden';
     saveItemBtns[column].style.display = 'flex';
     addContainers[column].style.display = 'flex';
@@ -155,9 +105,6 @@ function addtoColumn(column) {
         itemText = addItems[column].innerText;
         console.log(itemText);
         backlogListArray.push(itemText);
-        backlogList.innerHTML += `
-        <li class="drag-item" contenteditable="true" onfocusout="updateItem()">${itemText}</li>
-        `;
     }
     if (column == 1) {
         itemText = addItems[column].innerText;
@@ -174,6 +121,8 @@ function addtoColumn(column) {
         console.log(itemText);
         onHoldListArray.push(itemText);
     }
+    updateArrays(column);
 }
 
+// On Startup
 updateArrays();
