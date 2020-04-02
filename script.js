@@ -13,11 +13,11 @@ const onHoldList = document.getElementById('on-hold-list');
 let dragItems = document.querySelectorAll('drag-item');
 
 let itemText = '';
-
 let updatedOnLoad = false;
 
+// Array Values
 let backlogListArray = [ "May the force be with you", "lorem ipsum" ];
-let progressListArray = [ "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus sequi culpa fuga numquam vel voluptatum beatae deleniti voluptatem, expedita a dicta sed provident? Nesciunt incidunt ipsam nemo quod, maxime laudantium.", "Lana Del Ray"];
+let progressListArray = [ "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus sequi culpa fuga.", "Lana Del Ray" ];
 let completeListArray = [ "Being cool", "Getting stuff done"];
 let onHoldListArray = [ "Being uncool" ];
 
@@ -65,7 +65,7 @@ function updateArrays(column) {
                 console.log('no value');
             } else {
                 backlogList.innerHTML += `
-                <li id="${[i]}" class="drag-item" contenteditable="true" onfocusout="updateItem(this.id, ${column})">${backlogListArray[i]}</li>
+                <li id="${[i]}" class="drag-item" contenteditable="true" onfocusout="updateItem(this.id, ${column})" draggable="true" ondragstart="drag(event)">${backlogListArray[i]}</li>
                 `;
             }
         }
@@ -77,7 +77,7 @@ function updateArrays(column) {
                 console.log('no value');
             } else {
                 progressList.innerHTML += `
-                <li id="${[i]}" class="drag-item" contenteditable="true" onfocusout="updateItem(this.id, ${column})">${progressListArray[i]}</li>
+                <li id="${[i]}" class="drag-item" contenteditable="true" onfocusout="updateItem(this.id, ${column})" draggable="true" ondragstart="drag(event)">${progressListArray[i]}</li>
                 `;
             }
         }
@@ -89,7 +89,7 @@ function updateArrays(column) {
                 console.log('no value');
             } else {
                 completeList.innerHTML += `
-                <li id="${[i]}" class="drag-item" contenteditable="true" onfocusout="updateItem(this.id, ${column})">${completeListArray[i]}</li>
+                <li id="${[i]}" class="drag-item" contenteditable="true" onfocusout="updateItem(this.id, ${column})" draggable="true" ondragstart="drag(event)">${completeListArray[i]}</li>
                 `;
             }
         }
@@ -101,7 +101,7 @@ function updateArrays(column) {
                 console.log('no value');
             } else {
                 onHoldList.innerHTML += `
-                <li id="${[i]}" class="drag-item" contenteditable="true" onfocusout="updateItem(this.id, ${column})">${onHoldListArray[i]}</li>
+                <li id="${[i]}" class="drag-item" contenteditable="true" onfocusout="updateItem(this.id, ${column})" draggable="true" ondragstart="drag(event)">${onHoldListArray[i]}</li>
                 `;
             }
         }
@@ -161,3 +161,31 @@ function addtoColumn(column) {
 
 // On Startup
 updateArrays();
+
+
+
+var dragged;
+function drag(e) {
+    dragged = e.target;
+}
+function allowDrop(e) {
+    e.preventDefault();
+}
+function drop(e) {
+    e.preventDefault();
+
+    let parent;
+    if(e.currentTarget){
+        // In Safari no path
+        parent = e.currentTarget
+    }else{
+        // In chrome path
+        parent = e.path.filter((i)=>{
+            if(i.classList){
+                return i.classList.contains('drag-item-list');
+            }
+        })[0];
+    }
+
+    parent.appendChild(dragged);
+}

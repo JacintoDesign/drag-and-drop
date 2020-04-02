@@ -116,6 +116,10 @@ ul {
     background-color: var(--column-4); 
 }
 
+.drag-item-list {
+    min-height: 50px;
+}
+
 .drag-item {
     margin: 10px;
     padding: 10px;
@@ -124,6 +128,7 @@ ul {
     border-radius: 10px;
     line-height: 1.5rem;
     letter-spacing: 1px;
+    cursor: pointer;
 }
 
 .drag-item:focus {
