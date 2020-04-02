@@ -3,6 +3,7 @@ const saveItemBtns = document.querySelectorAll('.solid');
 const addContainers = document.querySelectorAll('.add-container');
 const addBtns = document.querySelectorAll('.add-btn:not(.solid)');
 const addItems = document.querySelectorAll('.add-item');
+const lists = document.querySelectorAll('.drag-item-list');
 
 // Column Lists
 const backlogList = document.getElementById('backlog-list');
@@ -162,7 +163,15 @@ function addtoColumn(column) {
 // On Startup
 updateArrays();
 
+function dragEnter(column) {
+    console.log(column)
+    console.log('Event: ', 'dragenter');
+    lists[column].classList.add('over');
+  }
 
+  function dragLeave() {
+    console.log('Event: ', 'dragleave');
+  }
 
 var dragged;
 function drag(e) {
@@ -187,5 +196,10 @@ function drop(e) {
         })[0];
     }
 
+    lists[0].classList.remove('over');
+    lists[1].classList.remove('over');
+    lists[2].classList.remove('over');
+    lists[3].classList.remove('over');
     parent.appendChild(dragged);
+    updateArrays();
 }

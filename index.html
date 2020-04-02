@@ -18,7 +18,7 @@
                 </span>
                 <!-- To Do Content -->
                 <div id="backlog-content" class="custom-scroll">
-                    <ul class="drag-item-list" id="backlog-list" ondrop="drop(event)" ondragover="allowDrop(event)"></ul>
+                    <ul class="drag-item-list" id="backlog-list" ondrop="drop(event)" ondragover="allowDrop(event)" ondragenter="dragEnter(0)" ondragleave="dragLeave()"></ul>
                     <!-- Add Button Group -->
                     <div class="add-btn-group">
                         <div class="add-btn" onclick="showInputBox(0)">
@@ -41,7 +41,7 @@
                 </span>
                 <!-- Progress Content -->
                 <div id="progress-content" class="custom-scroll">
-                    <ul class="drag-item-list" id="progress-list" ondrop="drop(event)" ondragover="allowDrop(event)"></ul>
+                    <ul class="drag-item-list" id="progress-list" ondrop="drop(event)" ondragover="allowDrop(event)" ondragenter="dragEnter(1)" ondragleave="dragLeave()"></ul>
                     <!-- Add Button Group -->
                     <div class="add-btn-group">
                         <div class="add-btn" onclick="showInputBox(1)">
@@ -64,7 +64,7 @@
                 </span>
                 <!-- Complete Content -->
                 <div id="complete-content" class="custom-scroll">
-                    <ul class="drag-item-list" id="complete-list" ondrop="drop(event)" ondragover="allowDrop(event)"></ul>
+                    <ul class="drag-item-list" id="complete-list" ondrop="drop(event)" ondragover="allowDrop(event)" ondragenter="dragEnter(2)" ondragleave="dragLeave()"></ul>
                     <!-- Add Button Group -->
                     <div class="add-btn-group">
                         <div class="add-btn" onclick="showInputBox(2)">
@@ -87,7 +87,7 @@
                 </span>
                 <!-- On Hold Content -->
                 <div id="on-hold-content" class="custom-scroll">
-                    <ul class="drag-item-list" id="on-hold-list" ondrop="drop(event)" ondragover="allowDrop(event)"></ul>
+                    <ul class="drag-item-list" id="on-hold-list" ondrop="drop(event)" ondragover="allowDrop(event)" ondragenter="dragEnter(3)" ondragleave="dragLeave()"></ul>
                     <!-- Add Button Group -->
                     <div class="add-btn-group">
                         <div class="add-btn" onclick="showInputBox(3)">
