@@ -163,6 +163,7 @@ function addtoColumn(column) {
 // On Startup
 updateArrays();
 
+// Drag Functionality
 function dragEnter(column) {
     console.log(column)
     console.log('Event: ', 'dragenter');
@@ -201,5 +202,26 @@ function drop(e) {
     lists[2].classList.remove('over');
     lists[3].classList.remove('over');
     parent.appendChild(dragged);
+    rebuildArrays();
+}
+
+// Allows arrays to reflect Drag and Drop items
+function rebuildArrays() {
+    backlogListArray = [];
+    for (i = 0; i < backlogList.children.length; i++) {
+        backlogListArray.push(backlogList.children[i].innerText);
+    }
+    progressListArray = [];
+    for (i = 0; i < progressList.children.length; i++) {
+        progressListArray.push(progressList.children[i].innerText);
+    }
+    completeListArray = [];
+    for (i = 0; i < completeList.children.length; i++) {
+        completeListArray.push(completeList.children[i].innerText);
+    }
+    onHoldListArray = [];
+    for (i = 0; i < onHoldList.children.length; i++) {
+        onHoldListArray.push(onHoldList.children[i].innerText);
+    }
     updateArrays();
 }
