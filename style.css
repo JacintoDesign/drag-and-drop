@@ -44,10 +44,6 @@ ul {
     align-items: flex-start;
 }
 
-/* @media screen and (max-width: 600px) {
-    .drag-list { display: block; }
-} */
-
 .drag-column {
     flex: 1;
     margin: 0 10px;
@@ -83,8 +79,6 @@ ul {
 .header {
     display: flex;
     justify-content: center;
-    /* border-top-right-radius: 10px;
-    border-top-left-radius: 10px; */
     border-radius: 10px;
     margin: 10px;
 }
@@ -216,4 +210,12 @@ ul {
 /* Media Query: Laptop */
 @media screen and (max-width: 1800px) {
     .main-title { font-size: 2rem; }
+}
+
+/* Media Query: Large Smartphone (Vertical) */
+@media screen and (max-width: 600px) {
+    body { overflow-y: auto; }
+    .drag-container { margin: 0; }
+    .drag-list { display: block; }
+    .drag-column { margin: 10px; }
 }
