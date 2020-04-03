@@ -16,16 +16,16 @@ let dragItems = document.querySelectorAll('drag-item');
 let itemText = '';
 let updatedOnLoad = false;
 
-// Array Values
-let backlogListArray = [ "Release the course", "Sit back and relax" ];
-let progressListArray = [ "Work on planning and recording videos for projects", "Listen to Lana Del Ray" ];
-let completeListArray = [ "Being cool", "Getting stuff done"];
-let onHoldListArray = [ "Being uncool" ];
+// Initialize Arrays
+let backlogListArray = [];
+let progressListArray = [];
+let completeListArray = [];
+let onHoldListArray = [];
 
 // Update Item - Delete if necessary, or update Array value
 function updateItem(id, column) {
     if (dragging == false) {
-// console.log('update');
+console.log('update');
 // console.log('testing that', id, column);
         if (column == 0) {
             if (backlogList.children[id] == undefined || backlogList.children[id].innerText == '') {
@@ -61,60 +61,84 @@ function updateItem(id, column) {
 
 // Update Arrays - Reset container HTML, loop through and add back items, exclude items with no value
 function updateArrays(column) {
-    if (column == 0 || !updatedOnLoad) {
-//console.log('updateonLoad', updatedOnLoad);
-        backlogList.innerHTML = '';
-        for (i = 0; i < backlogListArray.length; i++) {
-            if (backlogListArray[i] == undefined) {
-                console.log('no value');
-            } else {
-                backlogList.innerHTML += `
-                <li id="${[i]}" class="drag-item" contenteditable="true" onfocusout="updateItem(this.id, ${column})" draggable="true" ondragstart="drag(event)">${backlogListArray[i]}</li>
-                `;
-            }
+    // Check localStorage once
+    if (!updatedOnLoad) {
+        checkStorage();
+    }
+    // Backlog Column
+    backlogList.innerHTML = '';
+    for (i = 0; i < backlogListArray.length; i++) {
+        if (backlogListArray[i] == undefined) {
+            console.log('no value');
+        } else {
+            backlogList.innerHTML += `
+            <li id="${[i]}" class="drag-item" contenteditable="true" onfocusout="updateItem(this.id, ${column})" draggable="true" ondragstart="drag(event)">${backlogListArray[i]}</li>
+            `;
         }
     }
-    if (column == 1 || !updatedOnLoad) {
-        progressList.innerHTML = '';
-        for (i = 0; i < progressListArray.length; i++) {
-            if (progressListArray[i] == undefined) {
-                console.log('no value');
-            } else {
-                progressList.innerHTML += `
-                <li id="${[i]}" class="drag-item" contenteditable="true" onfocusout="updateItem(this.id, ${column})" draggable="true" ondragstart="drag(event)">${progressListArray[i]}</li>
-                `;
-            }
+    // Progress Column
+    progressList.innerHTML = '';
+    for (i = 0; i < progressListArray.length; i++) {
+        if (progressListArray[i] == undefined) {
+            console.log('no value');
+        } else {
+            progressList.innerHTML += `
+            <li id="${[i]}" class="drag-item" contenteditable="true" onfocusout="updateItem(this.id, ${column})" draggable="true" ondragstart="drag(event)">${progressListArray[i]}</li>
+            `;
         }
     }
-    if (column == 2 || !updatedOnLoad) {
-        completeList.innerHTML = '';
-        for (i = 0; i < completeListArray.length; i++) {
-            if (completeListArray[i] == undefined) {
-                console.log('no value');
-            } else {
-                completeList.innerHTML += `
-                <li id="${[i]}" class="drag-item" contenteditable="true" onfocusout="updateItem(this.id, ${column})" draggable="true" ondragstart="drag(event)">${completeListArray[i]}</li>
-                `;
-            }
+    // Complete Column
+    completeList.innerHTML = '';
+    for (i = 0; i < completeListArray.length; i++) {
+        if (completeListArray[i] == undefined) {
+            console.log('no value');
+        } else {
+            completeList.innerHTML += `
+            <li id="${[i]}" class="drag-item" contenteditable="true" onfocusout="updateItem(this.id, ${column})" draggable="true" ondragstart="drag(event)">${completeListArray[i]}</li>
+            `;
         }
     }
-    if (column == 3 || !updatedOnLoad) {
-        onHoldList.innerHTML = '';
-        for (i = 0; i < onHoldListArray.length; i++) {
-            if (onHoldListArray[i] == undefined) {
-                console.log('no value');
-            } else {
-                onHoldList.innerHTML += `
-                <li id="${[i]}" class="drag-item" contenteditable="true" onfocusout="updateItem(this.id, ${column})" draggable="true" ondragstart="drag(event)">${onHoldListArray[i]}</li>
-                `;
-            }
+    // On Hold Column
+    onHoldList.innerHTML = '';
+    for (i = 0; i < onHoldListArray.length; i++) {
+        if (onHoldListArray[i] == undefined) {
+            console.log('no value');
+        } else {
+            onHoldList.innerHTML += `
+            <li id="${[i]}" class="drag-item" contenteditable="true" onfocusout="updateItem(this.id, ${column})" draggable="true" ondragstart="drag(event)">${onHoldListArray[i]}</li>
+            `;
         }
     }
     updatedOnLoad = true;
+    // Update Local Storage
+    updateStorage();
     console.log('backlog:', backlogListArray);
     console.log('progress:', progressListArray);
     console.log('complete:', completeListArray);
     console.log('onHold:', onHoldListArray);
+}
+
+// Get Arrays from localStorage if available, set default values if not
+function checkStorage() {
+    if (localStorage.getItem('backlogItems') !== null) {
+        backlogListArray = JSON.parse(localStorage.backlogItems);
+        progressListArray = JSON.parse(localStorage.progressItems);
+        completeListArray = JSON.parse(localStorage.completeItems);
+        onHoldListArray = JSON.parse(localStorage.onHoldItems);
+    } else {
+        backlogListArray = [ "Release the course", "Sit back and relax" ];
+        progressListArray = [ "Work on planning and recording videos for projects", "Listen to Lana Del Ray" ];
+        completeListArray = [ "Being cool", "Getting stuff done" ];
+        onHoldListArray = [ "Being uncool" ];
+    }
+}
+
+// Set localStorage Arrays
+function updateStorage() {
+    localStorage.setItem('backlogItems', JSON.stringify(backlogListArray));
+    localStorage.setItem('progressItems', JSON.stringify(progressListArray));
+    localStorage.setItem('completeItems', JSON.stringify(completeListArray));
+    localStorage.setItem('onHoldItems', JSON.stringify(onHoldListArray));
 }
 
 // Show Add Item Input Box
