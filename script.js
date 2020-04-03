@@ -25,8 +25,8 @@ let onHoldListArray = [];
 // Update Item - Delete if necessary, or update Array value
 function updateItem(id, column) {
     if (dragging == false) {
-console.log('update');
-// console.log('testing that', id, column);
+//console.log('update', column);
+//console.log('testing that', id, column);
         if (column == 0) {
             if (backlogList.children[id] == undefined || backlogList.children[id].innerText == '') {
                 delete backlogListArray[id];
