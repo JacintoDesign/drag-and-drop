@@ -66,7 +66,7 @@ function updateArrays(column) {
                 console.log('no value');
             } else {
                 backlogList.innerHTML += `
-                <li id="${[i]}" class="drag-item" contenteditable="true" onfocusout="updateItem(this.id, ${column})" draggable="true" ondragstart="drag(event)">${backlogListArray[i]}</li>
+                <li id="${[i]}" class="drag-item" contenteditable="true" mouseleave="updateItem(this.id, ${column})" draggable="true" ondragstart="drag(event)">${backlogListArray[i]}</li>
                 `;
             }
         }
@@ -78,7 +78,7 @@ function updateArrays(column) {
                 console.log('no value');
             } else {
                 progressList.innerHTML += `
-                <li id="${[i]}" class="drag-item" contenteditable="true" onfocusout="updateItem(this.id, ${column})" draggable="true" ondragstart="drag(event)">${progressListArray[i]}</li>
+                <li id="${[i]}" class="drag-item" contenteditable="true" mouseleave="updateItem(this.id, ${column})" draggable="true" ondragstart="drag(event)">${progressListArray[i]}</li>
                 `;
             }
         }
@@ -90,7 +90,7 @@ function updateArrays(column) {
                 console.log('no value');
             } else {
                 completeList.innerHTML += `
-                <li id="${[i]}" class="drag-item" contenteditable="true" onfocusout="updateItem(this.id, ${column})" draggable="true" ondragstart="drag(event)">${completeListArray[i]}</li>
+                <li id="${[i]}" class="drag-item" contenteditable="true" mouseleave="updateItem(this.id, ${column})" draggable="true" ondragstart="drag(event)">${completeListArray[i]}</li>
                 `;
             }
         }
@@ -102,7 +102,7 @@ function updateArrays(column) {
                 console.log('no value');
             } else {
                 onHoldList.innerHTML += `
-                <li id="${[i]}" class="drag-item" contenteditable="true" onfocusout="updateItem(this.id, ${column})" draggable="true" ondragstart="drag(event)">${onHoldListArray[i]}</li>
+                <li id="${[i]}" class="drag-item" contenteditable="true" mouseleave="updateItem(this.id, ${column})" draggable="true" ondragstart="drag(event)">${onHoldListArray[i]}</li>
                 `;
             }
         }
@@ -135,28 +135,22 @@ function addtoColumn(column) {
     //console.log(column);
     if (column == 0) {
         itemText = addItems[column].innerText;
-        console.log(itemText);
         backlogListArray.push(itemText);
-        addItems[column].innerText = '';
     }
     if (column == 1) {
         itemText = addItems[column].innerText;
-        console.log(itemText);
         progressListArray.push(itemText);
-        addItems[column].innerText = '';
     }
     if (column == 2) {
         itemText = addItems[column].innerText;
-        console.log(itemText);
         completeListArray.push(itemText);
-        addItems[column].innerText = '';
     }
     if (column == 3) {
         itemText = addItems[column].innerText;
-        console.log(itemText);
         onHoldListArray.push(itemText);
-        addItems[column].innerText = '';
     }
+    console.log(itemText);
+    addItems[column].innerText = '';
     updateArrays(column);
 }
 
@@ -164,17 +158,21 @@ function addtoColumn(column) {
 updateArrays();
 
 // Drag Functionality
+let dragged;
+let currentColumn;
+
 function dragEnter(column) {
     console.log(column)
     console.log('Event: ', 'dragenter');
     lists[column].classList.add('over');
-  }
+    currentColumn = column;
+    console.log(currentColumn)
+}
 
-  function dragLeave() {
+function dragLeave() {
     console.log('Event: ', 'dragleave');
-  }
+}
 
-var dragged;
 function drag(e) {
     dragged = e.target;
 }
@@ -185,18 +183,9 @@ function drop(e) {
     e.preventDefault();
 
     let parent;
-    if(e.currentTarget){
-        // In Safari no path
-        parent = e.currentTarget
-    }else{
-        // In chrome path
-        parent = e.path.filter((i)=>{
-            if(i.classList){
-                return i.classList.contains('drag-item-list');
-            }
-        })[0];
-    }
-
+    parent = lists[currentColumn];
+    console.log(parent);
+ 
     lists[0].classList.remove('over');
     lists[1].classList.remove('over');
     lists[2].classList.remove('over');
