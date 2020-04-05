@@ -59,6 +59,20 @@ function updateItem(id, column) {
     }
 }
 
+function switchFunctionality(e) {
+    let target = e.target;
+    let canEdit = target.contenteditable;
+    let canDrag = target.draggable;
+    console.log(canEdit);
+    if (canEdit == false || canEdit == undefined) {
+        canEdit = true;
+    } else {
+        canEdit = false;
+    }
+    canDrag = !canDrag;
+    console.log(canEdit);
+}
+
 // Update Arrays - Reset container HTML, loop through and add back items, exclude items with no value
 function updateArrays() {
     // Check localStorage once
@@ -72,7 +86,7 @@ function updateArrays() {
             console.log('no value');
         } else {
             backlogList.innerHTML += `
-            <li id="${[i]}" class="drag-item" contenteditable="true" onfocusout="updateItem(this.id, 0)" draggable="true" ondragstart="drag(event)">${backlogListArray[i]}</li>
+            <li id="${[i]}" class="drag-item" ondblclick="switchFunctionality(event)" contenteditable="false" onfocusout="updateItem(this.id, 0)" draggable="true" ondragstart="drag(event)">${backlogListArray[i]}</li>
             `;
         }
     }
@@ -83,7 +97,7 @@ function updateArrays() {
             console.log('no value');
         } else {
             progressList.innerHTML += `
-            <li id="${[i]}" class="drag-item" contenteditable="true" onfocusout="updateItem(this.id, 1)" draggable="true" ondragstart="drag(event)">${progressListArray[i]}</li>
+            <li id="${[i]}" class="drag-item" ondblclick="switchFunctionality(event)" contenteditable="false" onfocusout="updateItem(this.id, 1)" draggable="true" ondragstart="drag(event)">${progressListArray[i]}</li>
             `;
         }
     }
@@ -94,7 +108,7 @@ function updateArrays() {
             console.log('no value');
         } else {
             completeList.innerHTML += `
-            <li id="${[i]}" class="drag-item" contenteditable="true" onfocusout="updateItem(this.id, 2)" draggable="true" ondragstart="drag(event)">${completeListArray[i]}</li>
+            <li id="${[i]}" class="drag-item" ondblclick="switchFunctionality(event)" contenteditable="false" onfocusout="updateItem(this.id, 2)" draggable="true" ondragstart="drag(event)">${completeListArray[i]}</li>
             `;
         }
     }
@@ -105,7 +119,7 @@ function updateArrays() {
             console.log('no value');
         } else {
             onHoldList.innerHTML += `
-            <li id="${[i]}" class="drag-item" contenteditable="true" onfocusout="updateItem(this.id, 3)" draggable="true" ondragstart="drag(event)">${onHoldListArray[i]}</li>
+            <li id="${[i]}" class="drag-item" ondblclick="switchFunctionality(event)" contenteditable="false" onfocusout="updateItem(this.id, 3)" draggable="true" ondragstart="drag(event)">${onHoldListArray[i]}</li>
             `;
         }
     }
