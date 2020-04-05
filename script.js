@@ -55,12 +55,12 @@ function updateItem(id, column) {
                 onHoldListArray[id] = onHoldList.children[id].innerText;
             }
         }
-        updateArrays(column);
+        updateArrays();
     }
 }
 
 // Update Arrays - Reset container HTML, loop through and add back items, exclude items with no value
-function updateArrays(column) {
+function updateArrays() {
     // Check localStorage once
     if (!updatedOnLoad) {
         checkStorage();
@@ -72,7 +72,7 @@ function updateArrays(column) {
             console.log('no value');
         } else {
             backlogList.innerHTML += `
-            <li id="${[i]}" class="drag-item" contenteditable="true" onfocusout="updateItem(this.id, ${column})" draggable="true" ondragstart="drag(event)">${backlogListArray[i]}</li>
+            <li id="${[i]}" class="drag-item" contenteditable="true" onfocusout="updateItem(this.id, 0)" draggable="true" ondragstart="drag(event)">${backlogListArray[i]}</li>
             `;
         }
     }
@@ -83,7 +83,7 @@ function updateArrays(column) {
             console.log('no value');
         } else {
             progressList.innerHTML += `
-            <li id="${[i]}" class="drag-item" contenteditable="true" onfocusout="updateItem(this.id, ${column})" draggable="true" ondragstart="drag(event)">${progressListArray[i]}</li>
+            <li id="${[i]}" class="drag-item" contenteditable="true" onfocusout="updateItem(this.id, 1)" draggable="true" ondragstart="drag(event)">${progressListArray[i]}</li>
             `;
         }
     }
@@ -94,7 +94,7 @@ function updateArrays(column) {
             console.log('no value');
         } else {
             completeList.innerHTML += `
-            <li id="${[i]}" class="drag-item" contenteditable="true" onfocusout="updateItem(this.id, ${column})" draggable="true" ondragstart="drag(event)">${completeListArray[i]}</li>
+            <li id="${[i]}" class="drag-item" contenteditable="true" onfocusout="updateItem(this.id, 2)" draggable="true" ondragstart="drag(event)">${completeListArray[i]}</li>
             `;
         }
     }
@@ -105,7 +105,7 @@ function updateArrays(column) {
             console.log('no value');
         } else {
             onHoldList.innerHTML += `
-            <li id="${[i]}" class="drag-item" contenteditable="true" onfocusout="updateItem(this.id, ${column})" draggable="true" ondragstart="drag(event)">${onHoldListArray[i]}</li>
+            <li id="${[i]}" class="drag-item" contenteditable="true" onfocusout="updateItem(this.id, 3)" draggable="true" ondragstart="drag(event)">${onHoldListArray[i]}</li>
             `;
         }
     }
@@ -126,10 +126,10 @@ function checkStorage() {
         completeListArray = JSON.parse(localStorage.completeItems);
         onHoldListArray = JSON.parse(localStorage.onHoldItems);
     } else {
-        backlogListArray = [ "Release the course", "Sit back and relax" ];
-        progressListArray = [ "Work on planning and recording videos for projects", "Listen to Lana Del Ray" ];
-        completeListArray = [ "Being cool", "Getting stuff done" ];
-        onHoldListArray = [ "Being uncool" ];
+        backlogListArray = [ 'Release the course', 'Sit back and relax' ];
+        progressListArray = [ 'Work on planning and recording videos for projects', 'Listen to Lana Del Ray' ];
+        completeListArray = [ 'Being cool', 'Getting stuff done' ];
+        onHoldListArray = [ 'Being uncool' ];
     }
 }
 
