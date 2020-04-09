@@ -1,10 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
+
 * { box-sizing: border-box; }
 
 :root {
-    --column-1: #AA6C39;
-    --column-2: #226666;
-    --column-3: #2D882D;
-    --column-4: #AA3939;
+    --column-1: #A2622D;
+    --column-2: #1B6161;
+    --column-3: #248224;
+    --column-4: #A22D22;
 }
 
 body {
@@ -15,13 +17,14 @@ body {
     background-position: 50% 60%;
     background-attachment: fixed;
     color: white;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: Quicksand, sans-serif;
     overflow-y: hidden;
 }
 
 
 h1 {
     letter-spacing: 2px;
+    text-shadow: 2px 2px 5px #000000;
 }
 
 .main-title {
@@ -179,7 +182,8 @@ ul {
 .plus-sign {
     font-size: 1.5rem;
     margin-right: 5px;
-    margin-top: 1px;
+    position: relative;
+    top: -3px;
 }
 
 .add-container {
