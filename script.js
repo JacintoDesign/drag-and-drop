@@ -1,10 +1,7 @@
-// Add/Save Btns, Items for every Column
 const saveItemBtns = document.querySelectorAll('.solid');
 const addContainers = document.querySelectorAll('.add-container');
 const addBtns = document.querySelectorAll('.add-btn:not(.solid)');
 const addItems = document.querySelectorAll('.add-item');
-
-// Column Lists
 const backlogList = document.getElementById('backlog-list');
 const progressList = document.getElementById('progress-list');
 const completeList = document.getElementById('complete-list');
