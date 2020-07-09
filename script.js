@@ -17,6 +17,7 @@ let backlogListArray = [];
 let progressListArray = [];
 let completeListArray = [];
 let onHoldListArray = [];
+let listArrays = [];
 
 // Drag Functionality
 let dragged;
@@ -24,7 +25,7 @@ let dragging = false;
 let currentColumn;
 
 // Get Arrays from localStorage if available, set default values if not
-function checkStorage() {
+function getSavedColumns() {
   if (localStorage.getItem('backlogItems')) {
     backlogListArray = JSON.parse(localStorage.backlogItems);
     progressListArray = JSON.parse(localStorage.progressItems);
@@ -39,7 +40,7 @@ function checkStorage() {
 }
 
 // Set localStorage Arrays
-function updateStorage() {
+function updateSavedColumns() {
   localStorage.setItem('backlogItems', JSON.stringify(backlogListArray));
   localStorage.setItem('progressItems', JSON.stringify(progressListArray));
   localStorage.setItem('completeItems', JSON.stringify(completeListArray));
@@ -73,7 +74,7 @@ function createItemEl(columnEl, column, item, index) {
 function updateDOM() {
   // Check localStorage once
   if (!updatedOnLoad) {
-    checkStorage();
+    getSavedColumns();
   }
   // Backlog Column
   backlogList.textContent = '';
@@ -109,41 +110,21 @@ function updateDOM() {
     }
   });
   onHoldListArray = filterArray(onHoldListArray);
-  // Update Local Storage
+  // Update listArrays, Update Local Storage
+  listArrays = [backlogListArray, progressListArray, completeListArray, onHoldListArray];
   updatedOnLoad = true;
-  updateStorage();
+  updateSavedColumns();
 }
 
 // Update Item - Delete if necessary, or update Array value
 function updateItem(id, column) {
+  const selectedArray = listArrays[column];
+  const selectedColumn = lists[column].children;
   if (dragging === false) {
-    if (column === 0) {
-      if (!backlogList.children[id].textContent) {
-        delete backlogListArray[id];
-      } else {
-        backlogListArray[id] = backlogList.children[id].textContent;
-      }
-    }
-    if (column === 1) {
-      if (!progressList.children[id].textContent) {
-        delete progressListArray[id];
-      } else {
-        progressListArray[id] = progressList.children[id].textContent;
-      }
-    }
-    if (column === 2) {
-      if (!completeList.children[id].textContent) {
-        delete completeListArray[id];
-      } else {
-        completeListArray[id] = completeList.children[id].textContent;
-      }
-    }
-    if (column === 3) {
-      if (!onHoldList.children[id].textContent) {
-        delete onHoldListArray[id];
-      } else {
-        onHoldListArray[id] = onHoldList.children[id].textContent;
-      }
+    if (!selectedColumn[id].textContent) {
+      delete selectedArray[id];
+    } else {
+      selectedArray[id] = selectedColumn[id].textContent;
     }
     updateDOM();
   }
@@ -152,18 +133,8 @@ function updateItem(id, column) {
 // Add to Column List, Reset Textbox
 function addtoColumn(column) {
   itemText = addItems[column].textContent;
-  if (column === 0) {
-    backlogListArray.push(itemText);
-  }
-  if (column === 1) {
-    progressListArray.push(itemText);
-  }
-  if (column === 2) {
-    completeListArray.push(itemText);
-  }
-  if (column === 3) {
-    onHoldListArray.push(itemText);
-  }
+  const selectedArray = listArrays[column];
+  selectedArray.push(itemText);
   addItems[column].textContent = '';
   updateDOM(column);
 }
