@@ -81,33 +81,25 @@ function updateDOM() {
   // Backlog Column
   backlogListEl.textContent = '';
   backlogListArray.forEach((backlogItem, index) => {
-    if (backlogItem) {
-      createItemEl(backlogListEl, 0, backlogItem, index);
-    }
+    createItemEl(backlogListEl, 0, backlogItem, index);
   });
   backlogListArray = filterArray(backlogListArray);
   // Progress Column
   progressListEl.textContent = '';
   progressListArray.forEach((progressItem, index) => {
-    if (progressItem) {
-      createItemEl(progressListEl, 1, progressItem, index);
-    }
+    createItemEl(progressListEl, 1, progressItem, index);
   });
   progressListArray = filterArray(progressListArray);
   // Complete Column
   completeListEl.textContent = '';
   completeListArray.forEach((completeItem, index) => {
-    if (completeItem) {
-      createItemEl(completeListEl, 2, completeItem, index);
-    }
+    createItemEl(completeListEl, 2, completeItem, index);
   });
   completeListArray = filterArray(completeListArray);
   // On Hold Column
   onHoldListEl.textContent = '';
   onHoldListArray.forEach((onHoldItem, index) => {
-    if (onHoldItem) {
-      createItemEl(onHoldListEl, 3, onHoldItem, index);
-    }
+    createItemEl(onHoldListEl, 3, onHoldItem, index);
   });
   onHoldListArray = filterArray(onHoldListArray);
   // Don't run more than once, Update Local Storage
