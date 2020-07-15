@@ -21,7 +21,7 @@ let onHoldListArray = [];
 let listArrays = [];
 
 // Drag Functionality
-let dragged;
+let draggedItem;
 let dragging = false;
 let currentColumn;
 
@@ -175,7 +175,7 @@ function dragEnter(column) {
 
 // When Item Starts Dragging
 function drag(e) {
-  dragged = e.target;
+  draggedItem = e.target;
   dragging = true;
 }
 
@@ -193,7 +193,7 @@ function drop(e) {
     column.classList.remove('over');
   });
   // Add item to Column
-  parent.appendChild(dragged);
+  parent.appendChild(draggedItem);
   // Dragging complete
   dragging = false;
   rebuildArrays();

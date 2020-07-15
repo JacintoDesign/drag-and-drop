@@ -47,6 +47,7 @@ ul {
   align-items: flex-start;
 }
 
+/* Columns */
 .drag-column {
   flex: 1;
   margin: 0 10px;
@@ -54,6 +55,34 @@ ul {
   background-color: rgba(0, 0, 0, 0.4);
   border-radius: 10px;
   overflow-x: hidden;
+}
+
+.backlog-column .header,
+.backlog-column .solid,
+.backlog-column .solid:hover,
+.backlog-column .over {
+  background-color: var(--column-1);
+}
+
+.progress-column .header,
+.progress-column .solid,
+.progress-column .solid:hover,
+.progress-column .over {
+  background-color: var(--column-2);
+}
+
+.complete-column .header,
+.complete-column .solid,
+.complete-column .solid:hover,
+.complete-column .over {
+  background-color: var(--column-3);
+}
+
+.on-hold-column .header,
+.on-hold-column .solid,
+.on-hold-column .solid:hover,
+.on-hold-column .over {
+  background-color: var(--column-4);
 }
 
 /* Custom Scrollbar */
@@ -90,40 +119,13 @@ ul {
   font-size: 1.25rem;
 }
 
-.backlog-column .header,
-.backlog-column .solid,
-.backlog-column .solid:hover,
-.backlog-column .over {
-  background-color: var(--column-1);
-}
-
-.progress-column .header,
-.progress-column .solid,
-.progress-column .solid:hover,
-.progress-column .over {
-  background-color: var(--column-2);
-}
-
-.complete-column .header,
-.complete-column .solid,
-.complete-column .solid:hover,
-.complete-column .over {
-  background-color: var(--column-3);
-}
-
-.on-hold-column .header,
-.on-hold-column .solid,
-.on-hold-column .solid:hover,
-.on-hold-column .over {
-  background-color: var(--column-4);
+/* Drag and Drop */
+.over {
+  padding: 50px 10px;
 }
 
 .drag-item-list {
   min-height: 50px;
-}
-
-.over {
-  padding: 50px 10px;
 }
 
 .drag-item {
@@ -143,6 +145,7 @@ ul {
   color: black;
 }
 
+/* Add Button Group */
 .add-btn-group {
   display: flex;
   justify-content: space-between;
