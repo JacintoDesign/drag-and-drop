@@ -119,7 +119,7 @@ function updateItem(id, column) {
 }
 
 // Add to Column List, Reset Textbox
-function addtoColumn(column) {
+function addToColumn(column) {
   const itemText = addItems[column].textContent;
   const selectedArray = listArrays[column];
   selectedArray.push(itemText);
@@ -139,7 +139,7 @@ function hideInputBox(column) {
   addBtns[column].style.visibility = 'visible';
   saveItemBtns[column].style.display = 'none';
   addItemContainers[column].style.display = 'none';
-  addtoColumn(column);
+  addToColumn(column);
 }
 
 // Allows arrays to reflect Drag and Drop items
