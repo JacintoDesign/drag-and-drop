@@ -10,7 +10,6 @@ const completeListEl = document.getElementById('complete-list');
 const onHoldListEl = document.getElementById('on-hold-list');
 
 // Items
-let itemText = '';
 let updatedOnLoad = false;
 
 // Initialize Arrays
@@ -121,7 +120,7 @@ function updateItem(id, column) {
 
 // Add to Column List, Reset Textbox
 function addtoColumn(column) {
-  itemText = addItems[column].textContent;
+  const itemText = addItems[column].textContent;
   const selectedArray = listArrays[column];
   selectedArray.push(itemText);
   addItems[column].textContent = '';
