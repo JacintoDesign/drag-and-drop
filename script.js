@@ -133,7 +133,6 @@ function showInputBox(column) {
   addBtns[column].style.visibility = 'hidden';
   saveItemBtns[column].style.display = 'flex';
   addItemContainers[column].style.display = 'flex';
-  listColumns[column].parentElement.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 // Hide Item Input Box
