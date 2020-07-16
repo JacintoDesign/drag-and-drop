@@ -89,7 +89,7 @@ ul {
 /* Custom Scrollbar */
 .custom-scroll {
   overflow-y: auto;
-  max-height: 78vh;
+  max-height: 75vh;
 }
 
 .custom-scroll::-webkit-scrollbar-track {
